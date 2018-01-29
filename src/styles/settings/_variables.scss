@@ -1,0 +1,37 @@
+$tm-base-spacing: 10px;
+
+// topoMap base colors
+$tm-c-light: #ffffff;
+$tm-c-dark: #333333;
+$tm-c-blue: #0d5469;
+$tm-c-grey-dark: #555;
+$tm-c-grey-light: #b0b0b0;
+$tm-c-twitter: rgba(0,171,222, 1);
+$tm-c-instagram: rgba(251,0,181, 1);
+
+// topoMap map colors
+$tm-c-water: $tm-c-blue;
+$tm-c-country: $tm-c-dark;
+$tm-c-border: $tm-c-grey-dark;
+$tm-c-annotation: $tm-c-grey-light;
+$tm-c-graticule: lighten($tm-c-dark, 20%);
+$tm-c-marker: $tm-c-instagram;
+
+// topoMap controls colors
+$tm-c-controls-primary: $tm-c-light;
+$tm-c-controls-secondary: $tm-c-dark;
+$tm-c-controls-tertiary: $tm-c-instagram;
+
+// topoMap controls sizes
+$tm-sz-controls: 150px;
+$tm-sz-control: 8px;
+$tm-sz-compass: 110px;
+$tm-sz-compass-nested: $tm-sz-compass * 0.65;
+
+$tm-compass-transparency: 0.2;
+
+// for css triangles
+$tm-triangle-transparent: $tm-sz-control solid transparent;
+$tm-triangle: $tm-sz-control solid $tm-c-controls-primary;
+
+$tm-tr-duration: 300ms;

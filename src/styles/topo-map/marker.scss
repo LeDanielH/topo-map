@@ -1,0 +1,53 @@
+@import "../settings/_index.scss";
+
+.rsm {
+	&-marker {
+
+		&__twitter {
+			fill: $tm-c-twitter;
+			stroke: fade-out($tm-c-twitter, 0.5);
+		}
+
+		&__instagram {
+			fill: $tm-c-instagram;
+			stroke: fade-out($tm-c-instagram, 0.5);
+		}
+
+		&__circle {
+			&.rsm-marker__instagram, &.rsm-marker__twitter {
+				@include will-animate(stroke-width, transform);
+				stroke-width: 0px;
+			}
+		}
+		&__wrapper {
+			cursor: pointer;
+			position: relative;
+			z-index: 1;
+
+			&.active {
+				pointer-events: none; // to be able to select another one close by
+				z-index: 2;
+
+			}
+
+			&:focus, &:hover, &.active {
+				.rsm-marker__circle {
+					&.rsm-marker__instagram, &.rsm-marker__twitter {
+						stroke-width: 3px;
+					}
+				}
+			}
+		}
+
+		&__city {
+			fill: $tm-c-light;
+			stroke: $tm-c-dark;
+			stroke-width: 0.2px;
+		}
+
+		&__text {
+			font-size: 1.7px;
+			display: inline-block;
+		}
+	}
+}

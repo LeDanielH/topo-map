@@ -1,0 +1,83 @@
+@import "../settings/_index.scss";
+
+$tm-pan-spacing: $tm-base-spacing/5;
+
+.tm {
+	&__pan {
+		@include size($tm-sz-compass);
+		overflow: hidden;
+		border-radius: $tm-sz-controls/2;
+		box-sizing: border-box;
+		@include will-animate(transform);
+		transform: scale(0);
+		transition-delay: $tm-tr-duration;
+
+		.tm__controls.active & {
+			transform: scale(1);
+		}
+
+		&-btn {
+			@include size($tm-sz-control * 2);
+			border-radius: $tm-sz-control;
+			cursor: pointer;
+
+			&:after {
+				transform: scale(0.8);
+				content: '';
+				display: block;
+				@include will-animate(border, transform);
+				transition-duration: $tm-tr-duration/2;
+			}
+
+			&:hover {
+				&:after {
+					transform: scale(1);
+				}
+			}
+
+			&:nth-of-type(1) {
+				@include position(absolute,$tm-pan-spacing null null 50%);
+				margin-left: -$tm-sz-control;
+				&:after {
+					border-left: $tm-triangle-transparent;
+					border-right: $tm-triangle-transparent;
+					border-bottom: $tm-triangle;
+					@include position(absolute, $tm-pan-spacing null null null);
+				}
+			}
+
+			&:nth-of-type(2) {
+				@include position(absolute, 50% $tm-pan-spacing null null);
+				margin-top: -$tm-sz-control;
+				&:after {
+					border-top: $tm-triangle-transparent;
+					border-bottom: $tm-triangle-transparent;
+					border-left: $tm-triangle;
+					@include position(absolute, null $tm-pan-spacing null null);
+				}
+			}
+
+			&:nth-of-type(3) {
+				@include position(absolute, null null $tm-pan-spacing 50%);
+				margin-left: -$tm-sz-control;
+				&:after {
+					border-left: $tm-triangle-transparent;
+					border-right: $tm-triangle-transparent;
+					border-top: $tm-triangle;
+					@include position(absolute, null null $tm-pan-spacing null);
+				}
+			}
+
+			&:nth-of-type(4) {
+				@include position(absolute, 50% null null $tm-pan-spacing);
+				margin-top: -$tm-sz-control;
+				&:after {
+					border-top: $tm-triangle-transparent;
+					border-bottom: $tm-triangle-transparent;
+					border-right: $tm-triangle;
+					@include position(absolute, null null null $tm-pan-spacing);
+				}
+			}
+		}
+	}
+}

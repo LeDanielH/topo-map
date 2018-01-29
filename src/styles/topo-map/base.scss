@@ -1,0 +1,23 @@
+@import "../settings/_index.scss";
+
+path, circle, g {
+	outline: none;
+	&:focus, &:active {
+		outline: none;
+	}
+}
+
+.rsm {
+	&-zoomable-group {
+		@include will-animate(transform);
+	}
+
+}
+
+.tm {
+	&__wrapper {
+		position: relative;
+		background-color: $tm-c-water;
+	}
+}
+

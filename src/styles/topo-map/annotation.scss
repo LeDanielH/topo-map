@@ -1,0 +1,29 @@
+@import "../settings/_index.scss";
+
+.rsm {
+	&-annotation {
+		&-text {
+			display: inline-block;
+			fill: $tm-c-annotation;
+			font-family: inherit;
+			@include will-animate(transform, font);
+			user-select: none;
+			pointer-events: none;
+
+			&.remove {
+				display: none;
+			}
+
+			&.hide {
+				@include will-animate(opacity, visibility);
+				opacity: 0;
+				visibility: hidden;
+				cursor: pointer;
+				&.active {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+	}
+}

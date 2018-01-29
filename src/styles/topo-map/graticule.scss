@@ -1,0 +1,16 @@
+@import "../settings/_index.scss";
+
+.rsm {
+	&-graticule {
+		path {
+			stroke: $tm-c-graticule;
+			@include will-animate(stroke-width);
+		}
+		&:first-of-type {
+			path {
+				stroke: $tm-c-water;
+				fill: $tm-c-water;
+			}
+		}
+	}
+}

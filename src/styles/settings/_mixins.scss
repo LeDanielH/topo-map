@@ -1,0 +1,5 @@
+@mixin will-animate($animProperties...) {
+	will-change: #{$animProperties};
+	transition-property: #{$animProperties};
+	@extend %anim-base;
+}

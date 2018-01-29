@@ -1,0 +1,86 @@
+@import "../settings/_index.scss";
+
+.tm {
+	&__controls {
+		@include position(absolute, null 12px 23px null);
+		@include size(135px);
+		box-sizing: border-box;
+		pointer-events: none;
+		user-select: none;
+		backface-visibility: hidden;
+
+		&.active {
+			pointer-events: auto;
+
+			.tm {
+				&__controls {
+					&-trigger {
+						background-color: $tm-c-controls-secondary;
+						border: 1px solid $tm-c-controls-primary;
+						&__icon {
+							transform: rotate(45deg);
+						}
+						span {
+							color: $tm-c-controls-primary;
+						}
+					}
+				}
+				&__compass {
+					transform: scale(1);
+				}
+			}
+		}
+
+		&-wrapper {
+			@include size(100%, auto);
+			transform-origin: bottom right;
+		}
+
+		&-trigger {
+			pointer-events: initial;
+			@include size($tm-sz-control * 2.5);
+			border-radius: 50%;
+			background-color: $tm-c-controls-primary;
+			@include position(absolute, null 0 0 null);
+			z-index: 2;
+			border: 1px solid $tm-c-controls-primary;
+			@include will-animate(border, transform, background-color);
+			cursor: pointer;
+
+			span {
+				display: inline-block;
+				color: $tm-c-controls-secondary;
+				line-height: 1;
+				font-size: $tm-sz-control*2;
+				@include will-animate(color);
+				@include position(absolute, 50% null null 50%);
+				@include margin(1px null null 1px);
+				transform: translate(-50%, -50%);
+			}
+
+			&__icon {
+				@include position(absolute, 0);
+				@include will-animate(transform);
+				transform: rotate(225deg);
+			}
+
+			&:hover {
+				background-color: $tm-c-controls-secondary;
+				border: 1px solid $tm-c-controls-primary;
+				//border: 1px solid $c-marker;
+				span {
+					color: $tm-c-controls-primary;
+				}
+			}
+		}
+	}
+	&__compass {
+		@include will-animate(transform);
+		transform: scale(0);
+		position: relative;
+		z-index: 1;
+		width: $tm-sz-compass;
+		border-radius: 50%;
+		background-color: fade-out($tm-c-controls-primary, $tm-compass-transparency);
+	}
+}

@@ -1,0 +1,47 @@
+@import "../settings/_index.scss";
+
+.tm {
+	&__zoom {
+		@include size($tm-sz-compass-nested);
+		@include position(absolute,50% null null 50%);
+		@include margin((-($tm-sz-compass-nested/2)) null null (-($tm-sz-compass-nested/2)));
+		border: 1px solid $tm-c-controls-primary;
+		border-radius: $tm-sz-compass-nested/2;
+
+		&-btn {
+			//background-color: $c-marker;
+			@include size($tm-sz-control * 2);
+			margin-left: -($tm-sz-control);
+			cursor: pointer;
+			background-color: transparent;
+			border-radius: 50%;
+			@include will-animate(background-color);
+			z-index: 1;
+
+			&:first-of-type {
+				@include position(absolute, 3px null null 50%);
+			}
+
+			&:last-of-type {
+				@include position(absolute, null null 3px 50%);
+			}
+			span {
+				display: inline-block;
+				@include will-animate(color, transform, background-color, border);
+				@include position(absolute, 50% null null 50%);
+				transform: translate3d(-50%, -50%, 0);
+				background-color: transparent;
+				color: $tm-c-controls-primary;
+				border-radius: 50%;
+				font-size: $tm-sz-control * 2;
+				line-height: $tm-sz-control * 2;
+			}
+			&:hover {
+				background-color: $tm-c-controls-primary;
+				span {
+					color: $tm-c-controls-secondary;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,75 @@
+@import "../settings/_index.scss";
+
+.tm {
+	&__reset {
+		$circle-size: $tm-sz-control * 2;
+		@include position(absolute, 50% null null 50%);
+		@include size($tm-sz-compass-nested, $circle-size);
+		@include margin((-($circle-size/2)) null null (-($tm-sz-compass-nested/2)));
+
+		&-btn {
+			text-align: center;
+			@include size($circle-size);
+			cursor: pointer;
+			box-sizing: border-box;
+			border-radius: 50%;
+			@include will-animate(border, background-color);
+
+			img {
+				@include size(100%, auto);
+				display: block;
+			}
+
+			&.to-myplace {
+				background-color: transparent;
+				border: 1px solid $tm-c-controls-primary;
+				@include position(absolute, 50% null null 50%);
+				@include margin((-($circle-size/2)) null null (-($circle-size/2)));
+
+				&:after {
+					@include size($tm-sz-control);
+					@include position(absolute, 50% null null 50%);
+					content: '';
+					display: block;
+					@include margin((-($tm-sz-control/2)) null null (-($tm-sz-control/2)));
+					background-color: $tm-c-controls-primary;
+					border-radius: 50%;
+					@include will-animate(transform, background-color);
+				}
+				&:hover {
+					border: 1px solid $tm-c-controls-secondary;
+					background-color: fade-out($tm-c-controls-primary, 0.9);
+					&:after {
+						transform: rotate3d(1, 0, 0, 180deg);
+						background-color: $tm-c-controls-secondary;
+					}
+				}
+			}
+
+			&.to-map {
+				@include position(absolute, 50% null null ($circle-size * 0.4));
+				margin-top: -($circle-size/2);
+
+				span {
+					@include will-animate(transform, color, background-color);
+					transform: rotate(0);
+					color: $tm-c-controls-primary;
+					background-color: transparent;
+					font-weight: bold;
+					line-height: $circle-size + 3px;
+					font-size: $circle-size;
+					display: inline-block;
+					@include size($circle-size);
+					border-radius: $circle-size/2;
+				}
+				&:hover {
+					span {
+						transform: rotate(-360deg);
+						color: $tm-c-controls-secondary;
+						background-color: $tm-c-controls-primary;
+					}
+				}
+			}
+		}
+	}
+}

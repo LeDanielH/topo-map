@@ -1,0 +1,150 @@
+@import "../settings/_index.scss";
+
+.tm {
+	&__range {
+		@include position(absolute, null $tm-base-spacing $tm-base-spacing null);
+
+		&-wrapper {
+			max-width: 0;
+			opacity: 0;
+			visibility: hidden;
+			position: relative;
+			transition-delay: $tm-tr-duration;
+			pointer-events: none;
+
+			&:first-of-type {
+				transform-origin: bottom right;
+				transform: rotate(270deg) translate3d(100%, 0, 0);
+				left: 4px;
+				top: 15px;
+				@include will-animate(max-width, top, opacity, visibility, transform);
+			}
+
+			&:last-of-type {
+				transform: translate3d(-($tm-sz-control*2), 0, 0);
+				top: 4px;
+				left: 15px;
+				@include will-animate(max-width, left, opacity, visibility, transform);
+
+			}
+
+			.tm__controls.active & {
+				max-width: $tm-sz-compass;
+				opacity: 1;
+				visibility: visible;
+				pointer-events: auto;
+				transition-delay: $tm-tr-duration;
+				&:first-of-type {
+					top: 10px;
+				}
+				&:last-of-type {
+					left: 4px;
+				}
+			}
+		}
+
+		input[type=range] {
+
+			// resetting default styles
+			appearance: none;
+			width: 100%;
+			background: transparent;
+
+			&:focus, &:hover {
+				// resetting default styles
+				outline: none;
+			}
+
+			&::-webkit-slider-thumb {
+				// resetting default styles
+				appearance: none;
+				// applying new for chrome
+				border: 1px solid $tm-c-controls-secondary;
+				@include size($tm-sz-control*2);
+				border-radius: $tm-sz-control;
+				cursor: pointer;
+				background-color: $tm-c-controls-primary;
+				@include position(relative, -$tm-sz-control null null null);
+				@include will-animate(border, background-color);
+
+				&:hover, &:focus {
+					border: 1px solid $tm-c-controls-primary;
+					background-color: $tm-c-controls-secondary;
+				}
+			}
+			&::-moz-range-thumb {
+				// applying new for firefox
+				border: 1px solid $tm-c-controls-secondary;
+				@include size($tm-sz-control*2);
+				border-radius: $tm-sz-control;
+				background-color: $tm-c-controls-primary;
+				cursor: pointer;
+			}
+			&::-ms-track {
+				// resetting default styles for IE
+				width: 100%;
+				cursor: pointer;
+				background: transparent;
+				border-color: transparent;
+				color: transparent;
+			}
+
+			&::-ms-thumb {
+				border: 1px solid $tm-c-controls-secondary;
+				@include size($tm-sz-control*2);
+				border-radius: $tm-sz-control;
+				background-color: $tm-c-controls-primary;
+				cursor: pointer;
+			}
+			&::-webkit-slider-runnable-track {
+				@include size(100%, 2px);
+				cursor: pointer;
+				background: $tm-c-controls-secondary;
+				border: 1px solid $tm-c-controls-primary;
+
+			}
+			&:focus, &:hover {
+				&::-webkit-slider-runnable-track {
+					background: $tm-c-controls-secondary;
+				}
+			}
+			&::-moz-range-track {
+				@include size(100%, 2px);
+				cursor: pointer;
+				background: $tm-c-controls-secondary;
+				border: 1px solid $tm-c-controls-primary;
+
+			}
+			&::-ms-track {
+				@include size(100%, 2px);
+				cursor: pointer;
+				background: transparent;
+				border-color: transparent;
+				border-width: $tm-sz-control*2 0;
+				color: transparent;
+			}
+
+			&::-ms-fill-lower {
+				background: $tm-c-controls-secondary;
+				border: 1px solid $tm-c-controls-primary;
+			}
+
+			&:focus, &:hover {
+				&::-ms-fill-lower {
+					background: $tm-c-controls-secondary;
+				}
+			}
+
+			&::-ms-fill-upper {
+				background: $tm-c-controls-secondary;
+				border: 1px solid $tm-c-controls-primary;
+			}
+
+			&:focus, &:hover {
+				&::-ms-fill-upper {
+					background: $tm-c-controls-secondary;
+				}
+			}
+		}
+	}
+}

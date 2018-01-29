@@ -1,0 +1,10 @@
+@import "../settings/_index.scss";
+
+.rsm {
+	&-geography {
+		@include will-animate(fill);
+		fill: $tm-c-country;
+		stroke: $tm-c-border;
+		position: relative;
+	}
+}
